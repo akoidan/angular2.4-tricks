@@ -1,0 +1,26 @@
+<p>
+  Hello {{ name }}
+</p>
+
+<h1>List</h1>
+
+<ul>
+  <li *ngFor="let friend of friends; let i = index;">
+    [{{i+1}}]: {{ friend.name }} , {{ friend.age }} <input type="button" (click)="deleteFriend(friend)" value="X" />
+  </li>
+</ul>
+
+<input type="text" [(ngModel)]="name" />
+<input type="number" [(ngModel)]="age" />
+<input type="button" (click)="addFriend()" value="Add" />
+
+<input type="button" (click)="showPosts()" value="Show posts" />
+<div *ngIf=isPostShown>
+  <h1>Posts</h1>
+  <div style="max-height: calc( 100vh - 300px); overflow: scroll">
+    <div *ngFor="let post of posts">
+      <h4>{{ post.title }}</h4>
+      {{post.body}}
+    </div>
+  </div>
+</div>
