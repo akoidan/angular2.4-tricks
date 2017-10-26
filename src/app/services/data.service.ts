@@ -4,12 +4,12 @@ import 'rxjs/add/operator/map';
 @Injectable()
 export class DataService {
 
-  constructor(public http:Http) {
-    console.log("Data service ok");
+  constructor(public http: Http) {
+    console.log('Data service ok');
    }
 
    getPosts() {
-     return this.http.get('https://jsonplaceholder.typicode.com/posts').map(res => 
+     return this.http.get('https://jsonplaceholder.typicode.com/posts').map(res =>
        res.json()
      );
    }

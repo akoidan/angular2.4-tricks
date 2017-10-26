@@ -1,5 +1,5 @@
-import { Component, OnInit } from '@angular/core';
-import {DataService} from "../../services/data.service";
+import {Component, OnInit} from '@angular/core';
+import {DataService} from '../../services/data.service';
 
 @Component({
   selector: 'app-user',
@@ -8,8 +8,8 @@ import {DataService} from "../../services/data.service";
 })
 
 export class UserComponent implements OnInit {
-  name : string;
-  age : number;
+  name: string;
+  age: number;
   friends: Friend[];
   posts: Post[];
   isPostShown: boolean;
@@ -20,9 +20,9 @@ export class UserComponent implements OnInit {
   };
 
   constructor(private dataService: DataService) {
-    console.log("Constructor ran");
+    console.log('Constructor ran');
     console.log(dataService);
-   }
+  }
 
   ngOnInit() {
     this.name = 'Andrew';
@@ -32,19 +32,22 @@ export class UserComponent implements OnInit {
       street: 'asd',
       city: 'asd',
       house: 3
-    }
-    this.friends = [{name: 'Alex', age:44}, {name:'Victor', age: 33}]
-    console.log("ng ran");
+    };
+    this.friends = [{name: 'Alex', age: 44}, {name: 'Victor', age: 33}];
+    console.log('ng ran');
     this.dataService.getPosts().subscribe(posts => {
       this.posts = posts;
-    })
+    });
   }
+
   addFriend() {
     this.friends.push({name: this.name, age: this.age});
   }
+
   deleteFriend(friend) {
     this.friends.splice(this.friends.indexOf(friend));
   }
+
   showPosts() {
     console.log('asd');
     this.isPostShown = !this.isPostShown;
@@ -53,13 +56,13 @@ export class UserComponent implements OnInit {
 }
 
 interface Friend {
-  name : string;
+  name: string;
   age: number;
 }
 
 interface Post {
-  id: number,
-  title: string,
-  body: string,
-  userId: number
+  id: number;
+  title: string;
+  body: string;
+  userId: number;
 }
